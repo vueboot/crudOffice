@@ -64,6 +64,7 @@ public class EmailService {
         email.setDept(map.get("dept"));
         email.setMsg(map.get("msg"));
         email.setUsername(map.get("username"));
+        emailDao.save(email);
     }
 
 }

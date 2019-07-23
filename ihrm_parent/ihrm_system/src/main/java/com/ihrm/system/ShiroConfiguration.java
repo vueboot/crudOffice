@@ -37,7 +37,6 @@ public class ShiroConfiguration {
         securityManager.setSessionManager(sessionManager());
         //将自定义的redis缓存管理器注册到安全管理器中
         securityManager.setCacheManager(cacheManager());
-
         return securityManager;
     }
 
@@ -61,9 +60,11 @@ public class ShiroConfiguration {
         //anon -- 匿名访问
         filterMap.put("/sys/login","anon");
         filterMap.put("/autherror","anon");
+        filterMap.put("/sys/registerStep1", "anon");
+        filterMap.put("/sys/registerStep2", "anon");
         //注册
         //authc -- 认证之后访问（登录）
-        filterMap.put("/**","authc");
+//        filterMap.put("/**","authc");
         //perms -- 具有某中权限 (使用注解配置授权)
         filterFactory.setFilterChainDefinitionMap(filterMap);
 
@@ -87,7 +88,7 @@ public class ShiroConfiguration {
     }
 
     /**
-     * 2.sessionDao
+     * 2.session
      */
     public RedisSessionDAO redisSessionDAO() {
         RedisSessionDAO sessionDAO = new RedisSessionDAO();
@@ -118,9 +119,7 @@ public class ShiroConfiguration {
     }
 
 
-
-
-    //开启对shior注解的支持
+    //开启对shiro注解的支持
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {
         AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();

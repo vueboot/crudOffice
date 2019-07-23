@@ -232,30 +232,12 @@ public class UserController extends BaseController {
         return new Result(ResultCode.SUCCESS, result);
     }
 
-    @PostMapping(value = "/registerStep1")
-    public Result reg1(@RequestBody Map<String, String> regMap1
-            , User user) {
-        try {
-            if (userService.findById(regMap1.get("id")) == null) {
-                userService.add(user);
-            }
-            return new Result(ResultCode.SUCCESS, user);
-        } catch (Exception e) {
-            return new Result(ResultCode.ALREADLY);
-        }
-    }
+//    public static void main(String[] args) {
+//        Map<String, String> map = new HashMap<>();
+//        map.put("1", "2");
+//        System.out.println(map.get("2"));
+//    }
 
-    @PostMapping(value = "/registerStep2")
-    public Result reg2(@RequestBody Map<String, String> regMap2,
-                       Email email) {
-        try {
-            if (emailService.findByStudentId(regMap2.get("studentId")) == null)
-                emailService.add(regMap2, email);
-            return new Result(ResultCode.SUCCESS, email);
-        } catch (Exception e) {
-            return new Result(ResultCode.ALREADLY);
-        }
-    }
 
 }
 

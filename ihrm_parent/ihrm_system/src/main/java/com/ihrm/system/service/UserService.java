@@ -151,11 +151,31 @@ public class UserService {
         String id = idWorker.nextId()+"";
         user.setLevel("user");
         user.setEnableState(1);
-        String password = new Md5Hash(user.getPassword(), user.getStudentId(), 3).toString();
         user.setId(id);
-        user.setPassword(password);
+        user.setPassword(user.getPassword());
+        user.setUsername(user.getUsername());
         user.setCreateTime(new Date());
         user.setCompanyId(String.valueOf(1001));
         user.setInServiceStatus(1);
+        user.setCompanyName("天津工业大学");
+        user.setCorrectionTime(new Date());
+        user.setCompanyId("1001");
+        user.setDepartmentId("000");
+        user.setDepartmentName("000");//申请实验室门牌号
+        user.setFormOfEmployment(1);
+        user.setFormOfManagement("1");
+        user.setTimeOfEntry(new Date());
+        user.setWorkingCity("Tianjin");
+        user.setWorkNumber("1");
+        userDao.save(user);
+    }
+
+    /**
+     * 查询是否已经被注册
+     * @param studengId
+     * @return
+     */
+    public User findByStudentId(String studengId) {
+        return userDao.findByStudentId(studengId);
     }
 }
