@@ -19,6 +19,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.lang.annotation.Target;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -148,23 +149,24 @@ public class UserService {
      * 6.注册
      */
     public void add(User user) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String id = idWorker.nextId()+"";
         user.setLevel("user");
         user.setEnableState(1);
         user.setId(id);
         user.setPassword(user.getPassword());
         user.setUsername(user.getUsername());
-        user.setCreateTime(new Date());
+        user.setCreateTime(sdf.format(new Date().getTime()));
         user.setCompanyId(String.valueOf(1001));
         user.setInServiceStatus(1);
         user.setCompanyName("天津工业大学");
-        user.setCorrectionTime(new Date());
+        user.setCorrectionTime(sdf.format(new Date().getTime()));
         user.setCompanyId("1001");
         user.setDepartmentId("000");
         user.setDepartmentName("000");//申请实验室门牌号
         user.setFormOfEmployment(1);
         user.setFormOfManagement("1");
-        user.setTimeOfEntry(new Date());
+        user.setTimeOfEntry(sdf.format(new Date().getTime()));
         user.setWorkingCity("Tianjin");
         user.setWorkNumber("1");
         userDao.save(user);

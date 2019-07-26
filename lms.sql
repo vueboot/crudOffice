@@ -11,7 +11,7 @@
  Target Server Version : 50725
  File Encoding         : 65001
 
- Date: 19/07/2019 21:19:04
+ Date: 26/07/2019 15:05:57
 */
 
 SET NAMES utf8mb4;
@@ -27,14 +27,14 @@ CREATE TABLE `bs_user`  (
   `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名称',
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
   `enable_state` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT ' 启用状态',
-  `create_time` datetime(0) NOT NULL COMMENT '创建时间',
+  `create_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建时间',
   `department_id` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '部门id',
-  `time_of_entry` datetime(0) NOT NULL COMMENT '入职时间',
+  `time_of_entry` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '入职时间',
   `form_of_employment` int(1) NOT NULL COMMENT '聘用形式',
   `work_number` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '工号',
   `form_of_management` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '管理形式',
   `working_city` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '工作城市',
-  `correction_time` datetime(0) NOT NULL COMMENT '转正时间',
+  `correction_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '转正时间',
   `in_service_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '在职状态',
   `company_id` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '企业id',
   `company_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -47,7 +47,6 @@ CREATE TABLE `bs_user`  (
 -- Records of bs_user
 -- ----------------------------
 INSERT INTO `bs_user` VALUES ('1', '13702197777', 'ww', 'kdyg111', '1', '2019-07-02 16:00:08', '1', '2019-07-02 16:00:13', 1, '1', '1', '1', '2019-07-02 16:00:20', '1', '1001', '天津工业大学', '408', 'saasAdmin');
-INSERT INTO `bs_user` VALUES ('10000000000002', '13702197384', 'bb', 'kdyg111', '1', '2019-06-28 13:15:40', '1', '2019-06-28 13:15:45', 1, '1', '1', '1', '2019-06-28 13:15:51', '1', '1001', '天津工业大学', '405', 'coAdmin');
 INSERT INTO `bs_user` VALUES ('100000000000020', '13800958000', 'xx', 'kdyg111', '1', '2019-06-28 13:18:36', '1', '2019-06-28 13:18:45', 1, '12', '1', '1', '2019-06-28 13:19:01', '1', '1001', '天津工业大学', '410', 'user');
 INSERT INTO `bs_user` VALUES ('10000000000004', '13702337284', 'cc', 'kdyg111', '1', '2019-06-28 13:16:12', '1', '2019-06-18 13:16:16', 1, '1', '1', '1', '2019-06-28 13:16:21', '1', '1001', '天津工业大学', '408', 'coAdmin');
 INSERT INTO `bs_user` VALUES ('10000000000005', '13800133000', 'ee', 'kdyg111', '1', '2019-06-28 13:18:36', '1', '2019-06-28 13:18:45', 1, '12', '1', '1', '2019-06-28 13:19:01', '1', '1001', '天津工业大学', '405', 'user');
@@ -63,6 +62,7 @@ INSERT INTO `bs_user` VALUES ('10000000000016', '13702199286', 'pp', 'kdyg111', 
 INSERT INTO `bs_user` VALUES ('10000000000017', '13702337285', 'qq', 'kdyg111', '1', '2019-06-28 13:15:06', '1', '2019-06-28 13:15:11', 1, '1', '1', '1', '2019-06-28 13:15:18', '1', '1001', '天津工业大学', '410', 'coAdmin');
 INSERT INTO `bs_user` VALUES ('10000000000018', '137021327284', 'bbrr', 'kdyg111', '1', '2019-06-28 13:15:40', '1', '2019-06-28 13:15:45', 1, '1', '1', '1', '2019-06-28 13:15:51', '1', '1001', '天津工业大学', '408', 'user');
 INSERT INTO `bs_user` VALUES ('10000000000019', '13702217284', 'ss', 'kdyg111', '1', '2019-06-28 13:16:12', '1', '2019-06-18 13:16:16', 1, '1', '1', '1', '2019-06-28 13:16:21', '1', '1001', '天津工业大学', '405', 'user');
+INSERT INTO `bs_user` VALUES ('1152933481651302400', '18', 'zhangsan', '95a12f8c30ba24dc4d4bc114de86a795', '1', '2019-07-21 21:28:57', '000', '2019-07-21 21:28:57', 1, '1', '1', 'Tianjin', '2019-07-21 21:28:57', '1', '1001', '天津工业大学', '000', 'user');
 INSERT INTO `bs_user` VALUES ('2', '23702197777', 'ww', 'kdyg111', '1', '2019-07-02 16:00:08', '1', '2019-07-02 16:00:13', 1, '1', '1', '1', '2019-07-02 16:00:20', '1', '1001', '天津工业大学', '410', 'coAdmin');
 INSERT INTO `bs_user` VALUES ('3', '33702197777', 'ww', 'kdyg111', '1', '2019-07-02 16:00:08', '1', '2019-07-02 16:00:13', 1, '1', '1', '1', '2019-07-02 16:00:20', '1', '1001', '天津工业大学', '408', 'user');
 
@@ -138,7 +138,7 @@ CREATE TABLE `email_msg`  (
 -- ----------------------------
 -- Records of email_msg
 -- ----------------------------
-INSERT INTO `email_msg` VALUES ('1711630402', 'GHY', '412', '申请加入');
+INSERT INTO `email_msg` VALUES ('1711630000', 'lisi', '409', '申请加入');
 INSERT INTO `email_msg` VALUES ('1711630403', 'FYJ', '408', '申请加入');
 
 -- ----------------------------

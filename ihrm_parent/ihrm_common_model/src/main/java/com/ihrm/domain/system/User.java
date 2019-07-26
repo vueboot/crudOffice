@@ -44,7 +44,7 @@ public class User implements Serializable {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private String createTime;
 
     private String companyId;
 
@@ -58,7 +58,7 @@ public class User implements Serializable {
     /**
      * 入职时间
      */
-    private Date timeOfEntry;
+    private String timeOfEntry;
 
     /**
      * 聘用形式
@@ -83,7 +83,7 @@ public class User implements Serializable {
     /**
      * 转正时间
      */
-    private Date correctionTime;
+    private String correctionTime;
 
     /**
      * 在职状态 1.在职  2.离职
